@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -15,9 +9,42 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-// --- Enum untuk Pilihan Terbatas ---
+model Car {
+  id           String           @id @default(uuid())
+  carName      String
+  slug         String           @unique
+  bodyType     BodyType
+  transmission TransmissionType
+  seats        Int?
+  bags         Int?
+  description  String?
+  imageUrl     String
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  prices       RentalPrice[]
+  testimonials Testimonial[]
+}
 
-// Enum Tipe Bodi Mobil
+model RentalPrice {
+  id            String  @id @default(uuid())
+  carId         String
+  pricePerDay   Int
+  pricePerWeek  Int?
+  pricePerMonth Int?
+  description   String?
+  car           Car     @relation(fields: [carId], references: [id])
+}
+
+model Testimonial {
+  id            String   @id @default(uuid())
+  carId         String
+  customerName  String
+  reviewContent String
+  date          DateTime @default(now())
+  rating        Int
+  car           Car      @relation(fields: [carId], references: [id])
+}
+
 enum BodyType {
   HATCHBACK
   SEDAN
@@ -27,57 +54,12 @@ enum BodyType {
   MINIBUS
 }
 
-// Enum Tipe Transmisi
 enum TransmissionType {
   MANUAL
   AUTOMATIC
 }
 
-// Enum Status Artikel
 enum ArticleStatus {
   DRAFT
   PUBLISHED
 }
-
-// --- Skema Data Utama ---
-
-// Tabel Mobil (Car)
-model Car {
-  id            String            @id @default(uuid())
-  carName       String
-  slug          String            @unique
-  bodyType      BodyType
-  transmission  TransmissionType  
-  seats         Int?
-  bags          Int?
-  description   String?
-  imageUrl      String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  
-  prices        RentalPrice[]
-  testimonials  Testimonial[]
-}
-
-// Tabel Harga Sewa (RentalPrice)
-model RentalPrice {
-  id            String  @id @default(uuid())
-  carId         String
-  car           Car     @relation(fields: [carId], references: [id])
-  pricePerDay   Int
-  pricePerWeek  Int?
-  pricePerMonth Int?
-  description   String?
-}
-
-// Tabel Testimonial
-model Testimonial {
-  id            String    @id @default(uuid())
-  carId         String
-  car           Car     @relation(fields: [carId], references: [id])
-  customerName  String
-  reviewContent String
-  date          DateTime  @default(now())
-  rating        Int
-}
-
