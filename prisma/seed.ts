@@ -12,7 +12,7 @@ async function main() {
   const cars = [
     {
       id: 'KRS01CAR001',
-      name: 'Toyota - Agya',
+      name: 'Toyota Agya',
       bodyType: 'HATCHBACK',
       transmission: 'AUTOMATIC',
       seats: 4,
@@ -41,7 +41,7 @@ async function main() {
     },
     {
       id: 'KRS01CAR002',
-      name: 'Honda - Civic',
+      name: 'Honda Civic',
       bodyType: 'SEDAN',
       transmission: 'AUTOMATIC',
       seats: 4,
@@ -69,7 +69,7 @@ async function main() {
     },
     {
       id: 'KRS01CAR003',
-      name: 'Toyota - Avanza',
+      name: 'Toyota Avanza',
       bodyType: 'MPV',
       transmission: 'MANUAL',
       seats: 7,
@@ -97,7 +97,7 @@ async function main() {
     },
     {
       id: 'KRS01CAR004',
-      name: 'Mitsubishi - Pajero Sport',
+      name: 'Mitsubishi Pajero Sport',
       bodyType: 'SUV',
       transmission: 'AUTOMATIC',
       seats: 7,
@@ -125,7 +125,7 @@ async function main() {
     },
     {
       id: 'KRS01CAR005',
-      name: 'Toyota - Alphard',
+      name: 'Toyota Alphard',
       bodyType: 'LUXURY',
       transmission: 'AUTOMATIC',
       seats: 7,
@@ -153,13 +153,13 @@ async function main() {
     },
     {
       id: 'KRS01CAR006',
-      name: 'Toyota - Hiace',
+      name: 'Toyota Hiace',
       bodyType: 'MINIBUS',
       transmission: 'MANUAL',
       seats: 15,
       bags: 10,
       description: 'Minibus untuk rombongan besar, ideal untuk wisata.',
-      imageUrl: '/images/cars/Toyota-Hiace.png',
+      imageUrl: '/imag/cars/Toyota-Hiace.png',
       prices: {
         create: {
           id: 'KRS02PRC006',

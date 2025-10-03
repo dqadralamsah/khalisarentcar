@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/components/layout/navbar/Navbar';
+import Footer from '@/components/layout/footer/footer';
 
-const poppinsSans = Poppins({
+const poppins = Poppins({
   weight: '400',
-  variable: '--font-geist-sans',
+  variable: '--font-poppins',
   subsets: ['latin'],
 });
 
@@ -19,8 +21,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppinsSans.variable} antialiased`}>{children}</body>
+    <html lang="en" className={`${poppins.variable} antialiased`}>
+      <body>
+        <header>
+          <Navbar />
+        </header>
+        <main>{children}</main>
+        <footer>
+          <Footer />
+        </footer>
+      </body>
     </html>
   );
 }
